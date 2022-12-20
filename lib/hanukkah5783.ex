@@ -1,18 +1,18 @@
 defmodule Hanukkah5783 do
-  @moduledoc """
-  Documentation for `Hanukkah5783`.
-  """
+  @customers "noahs-customers.jsonl"
+             |> File.read!()
+             |> String.split("\n", trim: true)
+             |> Enum.map(&Jason.decode!/1)
+  @products "noahs-products.jsonl"
+            |> File.read!()
+            |> String.split("\n", trim: true)
+            |> Enum.map(&Jason.decode!/1)
+  @orders "noahs-orders.jsonl"
+          |> File.read!()
+          |> String.split("\n", trim: true)
+          |> Enum.map(&Jason.decode!/1)
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Hanukkah5783.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  def customers, do: @customers
+  def products, do: @products
+  def orders, do: @orders
 end
